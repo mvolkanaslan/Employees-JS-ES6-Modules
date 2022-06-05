@@ -1,0 +1,27 @@
+{
+  "name": "employees-js-es6-modules",
+  "version": "1.0.0",
+  "main": "webpack.config.js",
+  "scripts": {
+    "dev": "webpack --watch  --mode development",
+    "build": "webpack --watch  --mode production",
+    "start": "webpack-dev-server  --mode development --open",
+    "start-server": "json-server --watch fake_db/db.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "babel-loader": "^8.2.5",
+    "css-loader": "^6.7.1",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
+  },
+  "dependencies": {
+    "core-js": "^3.22.8"
+  },
+  "description": ""
+}
