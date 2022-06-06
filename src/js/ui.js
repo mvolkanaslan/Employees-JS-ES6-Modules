@@ -17,7 +17,7 @@ export class UI {
     return employee;
   }
 
-  // Set Added  Employee to table
+  // Set Added  Employee to table, I use name attr. in icon element,for easy selection of employe to delete from table
   static setEmployeeToTable(employee) {
     employeesList.insertAdjacentHTML(
       "beforeend",
@@ -28,7 +28,7 @@ export class UI {
             <td>${employee.job}</td>
             <td>${employee.department}</td>
             <td>${employee.salary}</td>
-            <td><i class="fa-solid fa-trash-can m-2 text-danger"></i><i class="fa-solid fa-pen-to-square text-success"></i></td>
+            <td><i class="fa-solid fa-trash-can m-2 text-danger" name="${employee.id}"></i><i class="fa-solid fa-pen-to-square text-success" name="${employee.id}"></i></td>
         </tr>
         `
     );

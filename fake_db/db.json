@@ -1,32 +1,11 @@
 {
   "employee": [
     {
-      "id": 1,
-      "name": "Mehmet Volkan Aslan",
-      "department": "Mechanical Engineer",
-      "job": "",
-      "salary": 5500
-    },
-    {
       "name": "Engin Demiroğ",
       "job": "Programmer",
       "department": "CEO of Kodlama.IO",
       "salary": "10000",
-      "id": 4
-    },
-    {
-      "name": "Aytac Aslan",
-      "job": "Ahsap Ustasi",
-      "department": "CEO",
-      "salary": "10000",
-      "id": 5
-    },
-    {
-      "name": "Melih Varilci",
-      "job": "Computer Programing",
-      "department": "Full Stack Development",
-      "salary": "7500",
-      "id": 6
+      "id": 2
     }
   ]
 }

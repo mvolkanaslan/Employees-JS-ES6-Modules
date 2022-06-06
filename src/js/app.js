@@ -9,6 +9,7 @@ const db_connection = new DbConnection();
 
 const addBTN = document.getElementById("add_employee");
 const updateBTN = document.getElementById("add_employee");
+const employeeList = document.getElementById("employeesList");
 
 const employee = new Employee();
 
@@ -27,6 +28,18 @@ function eventListeners(){
             Toast.success(data.message);//Notification about Add process
         });
         
+    })
+
+    employeeList.addEventListener("click",e=>{
+        let element = e.target;
+        //if click trash icon delete the employee
+        if(element.classList.contains("fa-trash-can") && element.attributes["name"]){
+            let employeeId=element.attributes["name"].value;
+            db_connection.deleteEmployee(employeeId).then(data=>UI.setAllEmployeeToTable());
+        }
+        /*
+        TODO : Ask User Confirm when Click Delete Icon
+        */
     })
 }
 
