@@ -7,9 +7,12 @@ import { UI } from './ui';
 const db_connection = new DbConnection();
 
 
-const addBTN = document.getElementById("add_employee");
-const updateBTN = document.getElementById("add_employee");
+const addBtn = document.getElementById("add_employee");
+const updateBtn = document.getElementById("add_employee");
 const employeeList = document.getElementById("employeesList");
+const deleteModal = document.getElementById("deleteConfirm");
+const deleteBtn = document.getElementById("deleteBtn");
+
 
 const employee = new Employee();
 
@@ -19,7 +22,7 @@ function eventListeners(){
     UI.setAllEmployeeToTable();
 
     // Add new Employee
-    addBTN.addEventListener("click",()=>{
+    addBtn.addEventListener("click",()=>{
         let employeeToAdd = UI.getEmployeeFromForm();//get Employee's Properties from Form
 
         //Emplyoee added database and set the Employees Teble on the screen
@@ -32,15 +35,29 @@ function eventListeners(){
 
     employeeList.addEventListener("click",e=>{
         let element = e.target;
-        //if click trash icon delete the employee
-        if(element.classList.contains("fa-trash-can") && element.attributes["name"]){
-            let employeeId=element.attributes["name"].value;
-            db_connection.deleteEmployee(employeeId).then(data=>UI.setAllEmployeeToTable());
-        }
-        /*
-        TODO : Ask User Confirm when Click Delete Icon
-        */
+        //Delete Model Shown When Click Trash Icon and set the id of employee to delete as attribute of deleteModal        
+        deleteModal.addEventListener("shown.bs.modal",()=>{
+            deleteModal.setAttribute("employee",element.attributes["name"].value);
+        })
     })
+
+    deleteBtn.addEventListener("click",()=>{
+        //set the id of employee to delete from employee attribute of deleteModal
+        let employeeId = deleteModal.attributes["employee"].value;
+        //Deleting Process on databse and Userinterface and show notification
+        db_connection.deleteEmployee(employeeId).then(data=>{
+            UI.setAllEmployeeToTable();
+            Toast.success(data.message);
+        });
+        
+        
+    }
+
+    )
+
+
+
+
 }
 
 

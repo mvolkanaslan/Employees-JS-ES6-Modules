@@ -28,7 +28,7 @@ export class UI {
             <td>${employee.job}</td>
             <td>${employee.department}</td>
             <td>${employee.salary}</td>
-            <td><i class="fa-solid fa-trash-can m-2 text-danger" name="${employee.id}"></i><i class="fa-solid fa-pen-to-square text-success" name="${employee.id}"></i></td>
+            <td><i class="fa-solid fa-trash-can m-2 text-danger" name="${employee.id}" data-bs-toggle="modal" data-bs-target="#deleteConfirm"></i><i class="fa-solid fa-pen-to-square text-success" name="${employee.id}"></i></td>
         </tr>
         `
     );

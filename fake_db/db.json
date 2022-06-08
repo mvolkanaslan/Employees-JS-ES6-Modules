@@ -1,11 +1,3 @@
 {
-  "employee": [
-    {
-      "name": "Engin Demiroğ",
-      "job": "Programmer",
-      "department": "CEO of Kodlama.IO",
-      "salary": "10000",
-      "id": 2
-    }
-  ]
+  "employee": []
 }
