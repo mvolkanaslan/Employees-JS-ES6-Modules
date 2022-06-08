@@ -2,8 +2,8 @@ import { DbConnection } from "./db_connection.js";
 
 const employeeForm = document.getElementById("employee-form");
 const employeesList = document.getElementById("employeesList");
-
 const db_connection = new DbConnection();
+
 
 export class UI {
   static getEmployeeFromForm() {
@@ -13,7 +13,7 @@ export class UI {
       department: employeeForm.elements.department.value,
       salary: employeeForm.elements.salary.value,
     };
-    employeeForm.reset();
+    
     return employee;
   }
 
@@ -44,4 +44,12 @@ export class UI {
       });
     });
   }
+
+  static setUpdateEmployeeToForm(emp){
+    employeeForm.elements.name.value = emp.name;
+    employeeForm.elements.job.value=emp.job;
+    employeeForm.elements.department.value=emp.department;
+    employeeForm.elements.salary.value=emp.salary;
+}
+
 }

@@ -39,8 +39,6 @@ export class DbConnection {
     return { response: responseData, message: "Employee Updated !" };
   }
 
-
-
   async deleteEmployee(id){
     const response = await fetch(this.url + "/" + id, {
         method: "DELETE",
