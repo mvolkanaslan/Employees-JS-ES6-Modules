@@ -1,25 +1,27 @@
 import { DbConnection } from "./db_connection.js";
 
-const employeeForm = document.getElementById("employee-form");
-const employeesList = document.getElementById("employeesList");
-const db_connection = new DbConnection();
-
-
 export class UI {
-  static getEmployeeFromForm() {
+  constructor(){
+    this.employeeForm = document.getElementById("employee-form");
+    this.employeesList = document.getElementById("employeesList");
+    this.db_connection = new DbConnection();
+  }
+
+
+  getEmployeeFromForm() {
     let employee = {
-      name: employeeForm.elements.name.value,
-      job: employeeForm.elements.job.value,
-      department: employeeForm.elements.department.value,
-      salary: employeeForm.elements.salary.value,
+      name: this.employeeForm.elements.name.value.trim(),
+      job: this.employeeForm.elements.job.value.trim(),
+      department: this.employeeForm.elements.department.value.trim(),
+      salary: this.employeeForm.elements.salary.value.trim(),
     };
     
     return employee;
   }
 
   // Set Added  Employee to table, I use name attr. in icon element,for easy selection of employe to delete from table
-  static setEmployeeToTable(employee) {
-    employeesList.insertAdjacentHTML(
+  setEmployeeToTable(employee) {
+    this.employeesList.insertAdjacentHTML(
       "beforeend",
       `
         <tr>
@@ -34,22 +36,25 @@ export class UI {
     );
   }
   // Set All Employees to Table
-  static setAllEmployeeToTable() {
-    employeesList.innerHTML = "";
+  setAllEmployeeToTable() {
+    this.employeesList.innerHTML = "";
     let employees;
-    db_connection.getAllEmployees().then((responseData) => {
+    this.db_connection.getAllEmployees().then((responseData) => {
       employees = responseData;
       employees.map((employee) => {
-        this.setEmployeeToTable(employee);
+        this.setEmployeeToTable(employee); 
       });
     });
   }
 
-  static setUpdateEmployeeToForm(emp){
-    employeeForm.elements.name.value = emp.name;
-    employeeForm.elements.job.value=emp.job;
-    employeeForm.elements.department.value=emp.department;
-    employeeForm.elements.salary.value=emp.salary;
-}
+  setUpdateEmployeeToForm(emp){
+    this.employeeForm.elements.name.value = emp.name;
+    this.employeeForm.elements.job.value=emp.job;
+    this.employeeForm.elements.department.value=emp.department;
+    this.employeeForm.elements.salary.value=emp.salary;
+  } 
+  clearForm(){
+    this.employeeForm.reset();
+  }
 
 }

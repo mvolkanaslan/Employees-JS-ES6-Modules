@@ -41,12 +41,7 @@ export class DbConnection {
 
   async deleteEmployee(id){
     const response = await fetch(this.url + "/" + id, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        mode: "cors",
-        credentials: "same-origin",
+        method: "DELETE"
       });
       const responseData = await response.json();
       return { response: responseData, message: "Employee Deleted !" };
